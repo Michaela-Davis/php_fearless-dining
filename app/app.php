@@ -43,5 +43,10 @@
         return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
     });
 
+    $app->get("/restaurants/{id}", function($id) use ($app) {
+        $search_restaurant = Restaurant::findRestaurant($id);
+        return $app['twig']->render('restaurant.html.twig', array('restaurant' => $search_restaurant));
+    });
+
     return $app;
 ?>
