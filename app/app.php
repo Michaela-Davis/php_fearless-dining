@@ -14,6 +14,8 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'
     ));
 
+    $app['debug'] = true;
+
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig');
     });
@@ -25,8 +27,20 @@
     $app->post("/add-cuisine", function() use ($app) {
         $new_cuisine = new Cuisine($_POST['name']);
         $new_cuisine->save();
-        
+
         return $app['twig']->render('homeView.html.twig', array('cuisines'=> Cuisine::getAll()));
+    });
+
+    $app->get("cuisines/{id}", function($id) use ($app) {
+        $search_cuisine = Cuisine::findCuisine($id);
+        return $app['twig']->render('cuisine.html.twig', array('cuisine' => $search_cuisine, 'restaurants' => $search_cuisine->getRestaurants()));
+    });
+
+    $app->post("/add-restaurant", function() use ($app) {
+        $new_restaurant = new Restaurant($_POST['name'], $_POST['address'], $_POST['keywords'], $_POST['cuisine_id']);
+        $new_restaurant->save();
+        $cuisine = Cuisine::findCuisine($_POST['cuisine_id']);
+        return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
     });
 
     return $app;

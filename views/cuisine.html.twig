@@ -5,10 +5,25 @@
         <div class="container">
 
             <h1>Fearless Dining</h1>
-            <form method="post" action="/add-cuisine">
-                <input type="text" name="name" placeholder="New type of cuisine">
+            <form method="post" action="/add-restaurant">
+                <input type="text" name="name" placeholder="Restaurant name">
+                <input type="text" name="address" placeholder="Restaurant address">
+                <input type="text" name="keywords" placeholder="Restaurant keywords">
+                <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
                 <button class="btn btn-info" type="submit">Add</button>
             </form>
+
+            {% if restaurants is not empty %}
+                <ul>
+                    {% for restaurant in restaurants %}
+                    <li><a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>There are no restaurants yet!</p>
+            {% endif %}
+
+            <p><a href="/home">Home</a></p>
         </div>
     </body>
 </html>
