@@ -1,24 +1,24 @@
 <?php
     class Restaurant
     {
-        private $restaurant_id;
+        private $id;
         private $restaurant_name;
         private $address;
         private $keywords;
         private $cuisine_id;
 
-        function __construct($restaurant_name, $address, $keywords, $cuisine_id, $restaurant_id = null)
+        function __construct($restaurant_name, $address, $keywords, $cuisine_id, $id = null)
         {
             $this->restaurant_name = $restaurant_name;
             $this->address = $address;
             $this->keywords = $keywords;
             $this->cuisine_id = $cuisine_id;
-            $this->restaurant_id = $restaurant_id;
+            $this->id = $id;
         }
 
         function getRestaurantId()
         {
-            return $this->restaurant_id;
+            return $this->id;
         }
 
         function getRestaurantName()
@@ -49,7 +49,7 @@
 
         static function getAll()
         {
-            $returned_restaurants = $GLOBALS['DB']->query("SELECT FROM restaurants ORDER BY restaurant_name;");
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants ORDER BY restaurant_name;");
             $all_restaurants = array();
             foreach($returned_restaurants as $restaurant) {
                 $restaurant_name = $restaurant['restaurant_name'];
@@ -61,7 +61,11 @@
                 array_push($all_restaurants, $new_restaurant);
             }
             return $all_restaurants;
+        }
 
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants;");
         }
 
 
