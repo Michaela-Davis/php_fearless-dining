@@ -20,6 +20,11 @@
             return $this->cuisine_name;
         }
 
+        function setCuisineName($new_name)
+        {
+            $this->cuisine_name = (string) $new_name;
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO cuisines (name) VALUES ('{$this->getCuisineName()}');");
@@ -67,6 +72,13 @@
                 }
             }
             return $found_restaurants;
+        }
+
+        function updateCuisine($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE cuisines SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setCuisineName($new_name);
+
         }
     }
 
