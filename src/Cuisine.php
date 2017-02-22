@@ -56,6 +56,11 @@
             }
             return $found_cuisine;
         }
+
+        function getRestaurants()
+        {
+            
+        }
     }
 
 ?>

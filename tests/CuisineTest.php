@@ -51,6 +51,31 @@
 
             $this->assertEquals($new_cuisine, $result);
         }
+
+        function test_getRestaurantsByCuisine()
+        {
+            $cuisine_name = "Mexican";
+            $new_cuisine = new Cuisine($cuisine_name);
+            $new_cuisine->save();
+
+            $restaurant_name = "Matador";
+            $address = "1234 N Peach Lane, Portland OR";
+            $keywords = "yummy, cheap, spicy";
+            $cuisine_id = $new_cuisine->getId();
+            $new_restaurant = new Restaurant($restaurant_name, $address, $keywords, $cuisine_id);
+            $new_restaurant->save();
+
+            $restaurant_name2 = "Sivalai Thai";
+            $address2 = "5678 W Bark Road, Portland OR";
+            $keywords2 = "pricy, friendly";
+            $cuisine_id2 = 2;
+            $new_restaurant2 = new Restaurant($restaurant_name2, $address2, $keywords2, $cuisine_id2);
+            $new_restaurant2->save();
+
+            $result = $new_cuisine->getRestaurants();
+
+            $this->assertEquals([$new_restaurant], $result);
+        }
     }
 
 
