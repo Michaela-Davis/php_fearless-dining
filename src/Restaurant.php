@@ -41,7 +41,30 @@
             return $this->cuisine_id;
         }
 
-        
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO restaurants (restaurant_name, address, keywords, cuisine_id) VALUES ('{$this->getRestaurantName()}', '{$this->getAddress()}', '{$this->getKeywords()}', {$this->getCuisineId()});");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        static function getAll()
+        {
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT FROM restaurants ORDER BY restaurant_name;");
+            $all_restaurants = array();
+            foreach($returned_restaurants as $restaurant) {
+                $restaurant_name = $restaurant['restaurant_name'];
+                $address = $restaurant['address'];
+                $keywords = $restaurant['keywords'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $id = $restaurant['id'];
+                $new_restaurant = new Restaurant($restaurant_name, $address, $keywords, $cuisine_id, $id);
+                array_push($all_restaurants, $new_restaurant);
+            }
+            return $all_restaurants;
+
+        }
+
+
     }
 
 
