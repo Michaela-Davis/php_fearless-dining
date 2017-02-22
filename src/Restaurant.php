@@ -68,7 +68,18 @@
             $GLOBALS['DB']->exec("DELETE FROM restaurants;");
         }
 
-
+        static function findRestaurant($search_id)
+        {
+            $found_restaurant = null;
+            $all_restaurants = Restaurant::getAll();
+            foreach ($all_restaurants as $restaurant) {
+                $restaurant_id = $restaurant->getRestaurantId();
+                if($restaurant_id == $search_id) {
+                    $found_restaurant = $restaurant;
+                }
+            }
+            return $found_restaurant;
+        }
     }
 
 

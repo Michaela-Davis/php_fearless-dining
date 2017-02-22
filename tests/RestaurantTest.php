@@ -60,7 +60,7 @@
             $new_restaurant2->save();
 
             /// Act   ///
-            $result = Restaurant::findRestaurant($new_restaurant->getId());
+            $result = Restaurant::findRestaurant($new_restaurant->getRestaurantId());
 
             /// Assert ///
             $this->assertEquals($new_restaurant, $result);
