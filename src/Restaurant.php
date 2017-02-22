@@ -1,11 +1,11 @@
 <?php
     class Restaurant
     {
-        private $id;
         private $restaurant_name;
         private $address;
         private $keywords;
         private $cuisine_id;
+        private $id;
 
         function __construct($restaurant_name, $address, $keywords, $cuisine_id, $id = null)
         {
@@ -14,11 +14,6 @@
             $this->keywords = $keywords;
             $this->cuisine_id = $cuisine_id;
             $this->id = $id;
-        }
-
-        function getRestaurantId()
-        {
-            return $this->id;
         }
 
         function getRestaurantName()
@@ -41,18 +36,23 @@
             return $this->cuisine_id;
         }
 
+        function getRestaurantId()
+        {
+            return $this->id;
+        }
+
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO restaurants (restaurant_name, address, keywords, cuisine_id) VALUES ('{$this->getRestaurantName()}', '{$this->getAddress()}', '{$this->getKeywords()}', {$this->getCuisineId()});");
+            $GLOBALS['DB']->exec("INSERT INTO restaurants (name, address, keywords, cuisine_id) VALUES ('{$this->getRestaurantName()}', '{$this->getAddress()}', '{$this->getKeywords()}', {$this->getCuisineId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
         {
-            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants ORDER BY restaurant_name;");
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants ORDER BY name;");
             $all_restaurants = array();
             foreach($returned_restaurants as $restaurant) {
-                $restaurant_name = $restaurant['restaurant_name'];
+                $restaurant_name = $restaurant['name'];
                 $address = $restaurant['address'];
                 $keywords = $restaurant['keywords'];
                 $cuisine_id = $restaurant['cuisine_id'];
