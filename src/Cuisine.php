@@ -59,7 +59,14 @@
 
         function getRestaurants()
         {
-            
+            $found_restaurants = array();
+            $all_restaurants = Restaurant::getAll();
+            foreach($all_restaurants as $restaurant) {
+                if ($restaurant->getCuisineId() == $this->getId()) {
+                    array_push($found_restaurants, $restaurant);
+                }
+            }
+            return $found_restaurants;
         }
     }
 
