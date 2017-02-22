@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    {% include '/components/head.html.twig' %}
+    <body>
+        <div class="container">
+
+            <h1>Fearless Dining</h1>
+            <form method="post" action="/add-cuisine">
+                <input type="text" name="name" placeholder="New type of cuisine">
+                <button class="btn btn-info" type="submit">Add</button>
+            </form>
+        </div>
+    </body>
+</html>
