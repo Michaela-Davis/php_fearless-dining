@@ -36,6 +36,21 @@
 
             $this->assertEquals([$new_cuisine, $new_cuisine2], $result);
         }
+
+        function test_findCuisine()
+        {
+            $cuisine_name = "Mexican";
+            $new_cuisine = new Cuisine($cuisine_name);
+            $new_cuisine->save();
+
+            $cuisine_name2 = "Thai";
+            $new_cuisine2 = new Cuisine($cuisine_name2);
+            $new_cuisine2->save();
+
+            $result = Cuisine::findCuisine($new_cuisine->getId());
+
+            $this->assertEquals($new_cuisine, $result);
+        }
     }
 
 
