@@ -76,6 +76,19 @@
 
             $this->assertEquals([$new_restaurant], $result);
         }
+
+        function testUpdate()
+        {
+            $cuisine_name = "Mexican";
+            $new_cuisine = new Cuisine($cuisine_name);
+            $new_cuisine->save();
+
+            $updated_name = "South American";
+
+            $new_cuisine->update($updated_name);
+
+            $this->assertEquals("South American", $new_cuisine->getCuisineName());
+        }
     }
 
 
