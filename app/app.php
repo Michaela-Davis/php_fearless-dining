@@ -16,6 +16,9 @@
 
     $app['debug'] = true;
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig');
     });
@@ -31,7 +34,7 @@
         return $app['twig']->render('homeView.html.twig', array('cuisines'=> Cuisine::getAll()));
     });
 
-    $app->get("cuisines/{id}", function($id) use ($app) {
+    $app->get("/cuisines/{id}", function($id) use ($app) {
         $search_cuisine = Cuisine::findCuisine($id);
         return $app['twig']->render('cuisine.html.twig', array('cuisine' => $search_cuisine, 'restaurants' => $search_cuisine->getRestaurants()));
     });
@@ -46,6 +49,18 @@
     $app->get("/restaurants/{id}", function($id) use ($app) {
         $search_restaurant = Restaurant::findRestaurant($id);
         return $app['twig']->render('restaurant.html.twig', array('restaurant' => $search_restaurant));
+    });
+
+    $app->get("/cuisines/{id}/edit", function($id) use ($app) {
+        $cuisine = Cuisine::findCuisine($id);
+        return $app['twig']->render('cuisine_edit.html.twig', array('cuisine' => $cuisine));
+    });
+
+    $app->patch("/cuisines/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $this_cuisine = Cuisine::findCuisine($id);
+        $this_cuisine->updateCuisine($name);
+        return $app['twig']->render('homeView.html.twig', array('cuisine' => $this_cuisine, 'cuisines' => Cuisine::getAll()));
     });
 
     return $app;

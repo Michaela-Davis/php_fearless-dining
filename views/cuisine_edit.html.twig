@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    {% include '/components/head.html.twig' %}
+    <body>
+        <div class="container">
+
+            <h1>Update your {{cuisine.getCuisineName}} cuisine type</h1>
+            <form method="post" action="/cuisines/{{cuisine.getId}}">
+                <input type="hidden" value="patch" name="_method">
+
+                <label for="name">Rename your cuisine type:</label>
+                <input type="text" name="name" id="name" value="{{ cuisine.getCuisineName }}">
+                <button class="btn btn-info" type="submit">Update</button>
+            </form>
+
+
+            <p><a href="/home">Home</a></p>
+        </div>
+    </body>
+</html>
