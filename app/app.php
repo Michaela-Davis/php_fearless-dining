@@ -63,5 +63,21 @@
         return $app['twig']->render('homeView.html.twig', array('cuisine' => $this_cuisine, 'cuisines' => Cuisine::getAll()));
     });
 
+    $app->get("/restaurants/{id}/edit", function($id) use ($app) {
+        $restaurant = Restaurant::findRestaurant($id);
+        $cuisine = Cuisine::findCuisine($id);
+        return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant, 'cuisine' => $cuisine));
+    });
+
+    $app->patch("/restaurants/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $keywords = $_POST['keywords'];
+        $this_restaurant = Restaurant::findRestaurant($id);
+        $this_restaurant->updateRestaurant($name, $address, $keywords);
+        $cuisine = Cuisine::findCuisine($_POST['cuisine_id']);
+        return $app['twig']->render('cuisine.html.twig', array('restaurant' => $this_restaurant, 'restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
+    });
+
     return $app;
 ?>

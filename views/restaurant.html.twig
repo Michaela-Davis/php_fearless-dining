@@ -5,24 +5,11 @@
         <div class="container">
 
             <h1>Fearless Dining</h1>
-            <form method="post" action="/update-restaurant">
-                <input type="hidden" method="patch" name="_method">
-
-                <input type="text" name="name" placeholder="Restaurant name">
-                <input type="text" name="address" placeholder="Restaurant address">
-                <input type="text" name="keywords" placeholder="Restaurant keywords">
-                <input type="hidden" name="cuisine_id" value="{{ restaurant.getCuisineId }}">
-                <button class="btn btn-info" type="submit">Update</button>
-            </form>
 
             <h1>{{restaurant.getRestaurantName}}</h1>
 
             <p>Street Address: {{restaurant.getAddress}}</p>
             <p>Keywords: {{restaurant.getKeywords}}</p>
-            <form action="/delete" method="post">
-                <input type="hidden" method="delete" name="_method">
-                <button type="submit" class="btn btn-danger" name="button">Delete Restaurant</button>
-            </form>
 
 
             <p><a href="/home">Home</a></p>

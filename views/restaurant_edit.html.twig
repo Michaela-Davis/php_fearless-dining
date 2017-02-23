@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    {% include '/components/head.html.twig' %}
+    <body>
+        <div class="container">
+
+            <h1>Update {{restaurant.getRestaurantName}}</h1>
+            <form method="post" action="/restaurants/{{restaurant.getRestaurantId}}">
+                <input type="hidden" value="patch" name="_method">
+
+                <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
+
+                <label for="name">Update name:</label>
+                <input type="text" name="name" id="name" value="{{ restaurant.getRestaurantName }}">
+                <label for="address">Update address:</label>
+                <input type="text" name="address" id="address" value="{{ restaurant.getAddress }}">
+                <label for="keywords">Update restaurant keywords:</label>
+                <input type="text" name="keywords" id="keywords" value="{{ restaurant.getKeywords }}">
+                <button class="btn btn-info" type="submit">Update</button>
+            </form>
+
+
+            <p><a href="/home">Home</a></p>
+        </div>
+    </body>
+</html>
