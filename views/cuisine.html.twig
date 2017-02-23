@@ -16,7 +16,11 @@
             {% if restaurants is not empty %}
                 <ul>
                     {% for restaurant in restaurants %}
-                    <li><a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a>&nbsp;&nbsp;<a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Update</a>&nbsp;&nbsp;<a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Delete</a></li>
+                    <li><a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a>&nbsp;&nbsp;<a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Update</a></li>
+                    <form action="/restaurants/{{ restaurant.getRestaurantId}}" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger">Delete restaurant</button>
+                    </form>
                     {% endfor %}
                 </ul>
             {% else %}
