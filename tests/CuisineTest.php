@@ -8,7 +8,7 @@
     require_once "src/Cuisine.php";
     require_once "src/Restaurant.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=fearless_dining_test';
+    $server = 'mysql:host=localhost:3306;dbname=fearless_dining_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -103,6 +103,26 @@
             $new_cuisine->deleteCuisine();
 
             $this->assertEquals([$new_cuisine2], Cuisine::getAll());
+        }
+
+        function testDeleteCuisineRestaurants()
+        {
+            $cuisine_name = "Mexican";
+            $id = null;
+            $new_cuisine = new Cuisine($cuisine_name);
+            $new_cuisine->save();
+
+            $restaurant_name = "Matador";
+            $address = "1234 N Peach Lane, Portland OR";
+            $keywords = "yummy, cheap, spicy";
+            $cuisine_id = $new_cuisine->getId();
+            $new_restaurant = new Restaurant($restaurant_name, $address, $keywords, $cuisine_id);
+            $new_restaurant->save();
+
+            $new_cuisine->deleteCuisine();
+
+            $this->assertEquals([], Restaurants::getAll());
+
         }
     }
 

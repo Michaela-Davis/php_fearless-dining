@@ -8,7 +8,7 @@
             <form method="post" action="/restaurants/{{restaurant.getRestaurantId}}">
                 <input type="hidden" value="patch" name="_method">
 
-                <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
+                <input type="hidden" name="cuisine_id" value="{{ restaurant.getCuisineId }}">
 
                 <label for="name">Update name:</label>
                 <input type="text" name="name" id="name" value="{{ restaurant.getRestaurantName }}">

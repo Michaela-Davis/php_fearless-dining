@@ -13,6 +13,11 @@
                 <ul>
                 {% for cuisine in cuisines %}
                     <li><a href="/cuisines/{{ cuisine.getID }}">{{cuisine.getCuisineName}}</a> <a href="/cuisines/{{cuisine.getId}}/edit">Update</a></li>
+
+                    <form action="/cuisines/{{cuisine.getId}}" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger">Delete this cuisine type</button>
+                    </form>
                 {% endfor %}
                 </ul>
             {% else %}

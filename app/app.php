@@ -6,7 +6,7 @@
 
     $app = new Silex\Application();
 
-    $server = 'mysql:host=localhost:8889;dbname=fearless_dining';
+    $server = 'mysql:host=localhost:3306;dbname=fearless_dining';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -63,6 +63,12 @@
         return $app['twig']->render('homeView.html.twig', array('cuisine' => $this_cuisine, 'cuisines' => Cuisine::getAll()));
     });
 
+    $app->delete("/cuisines/{id}", function($id) use ($app) {
+        $cuisine = Cuisine::find($id);
+        $cuisine->deleteCuisine();
+        return $app['twig']->render('homeView.html.twig', array('cuisines' => Cuisine::getAll()));
+    });
+
     $app->get("/restaurants/{id}/edit", function($id) use ($app) {
         $restaurant = Restaurant::findRestaurant($id);
         $cuisine = Cuisine::findCuisine($id);
@@ -75,14 +81,16 @@
         $keywords = $_POST['keywords'];
         $this_restaurant = Restaurant::findRestaurant($id);
         $this_restaurant->updateRestaurant($name, $address, $keywords);
-        $cuisine = Cuisine::findCuisine($_POST['cuisine_id']);
+        $cuisine = Cuisine::findCuisine($this_restaurant->getCuisineId());
         return $app['twig']->render('cuisine.html.twig', array('restaurant' => $this_restaurant, 'restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
     });
 
     $app->delete("/restaurants/{id}", function($id) use ($app) {
         $restaurant = Restaurant::findRestaurant($id);
+        $restaurant_cuisine_id = $restaurant->getCuisineId();
+        $cuisine = Cuisine::findCuisine($restaurant_cuisine_id);
         $restaurant->deleteRestaurant();
-        return $app['twig']->render('cuisine.html.twig', array('restaurants' => Restaurant::getAll()));
+        return $app['twig']->render('cuisine.html.twig', array('restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
     });
 
     return $app;
