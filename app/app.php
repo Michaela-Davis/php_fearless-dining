@@ -56,6 +56,11 @@
         return $app['twig']->render('cuisine_edit.html.twig', array('cuisine' => $cuisine));
     });
 
+    $app->post("/cuisines/{id}/edit", function($id) use ($app) {
+        $cuisine = Cuisine::findCuisine($id);
+        return $app['twig']->render('cuisine_edit.html.twig', array('cuisine' => $cuisine));
+    });
+
     $app->patch("/cuisines/{id}", function($id) use ($app) {
         $name = $_POST['name'];
         $this_cuisine = Cuisine::findCuisine($id);
