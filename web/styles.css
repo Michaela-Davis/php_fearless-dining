@@ -6,8 +6,13 @@ body {
 h1 {
     font-family: 'Rancho', cursive;
     font-size: 200%;
+    text-align: center;
+    padding-bottom: 20px;
 }
 
+.home-link {
+    padding-top: 50px;
+}
 /*LANDING PAGE*/
 #landing {
     background-image: url("/img/landing.png");
@@ -63,7 +68,7 @@ h1 {
     height: 800px;
 }
 
-#cuisines-list {
+#cuisines-list, #cuisine-edit-section {
     background-color: #222222;
     margin: 20px;
     padding: 20px;
@@ -73,10 +78,6 @@ h1 {
     overflow-y: auto;
 }
 
-#cuisines-list h1 {
-    text-align: center;
-    padding-bottom: 20px;
-}
 
 #cuisines-list li {
     font-size: 180%;
@@ -92,13 +93,28 @@ h1 {
     display: inline;
 }
 
-#add-cuisine-form {
+#add-cuisine-form, #cuisine-edit-form {
     padding-bottom: 40px;
     font-size: 150%;
     padding-left: 30px;
 }
 
-#add-cuisine-form .btn {
+#add-cuisine-form, #cuisine-edit-form .btn {
     padding: 2px;
     font-size: 70%;
+}
+
+#cuisine-edit-column {
+    background: url("/img/cuisine-edit.jpg") no-repeat;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 15px;
+    height: 900px;
+}
+
+#cuisine-edit-section {
+    text-align: center;
 }

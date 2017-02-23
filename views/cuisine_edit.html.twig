@@ -5,18 +5,25 @@
         {% include '/components/headerBanner.html.twig' %}
 
         <div class="container">
-            <h1>Cuisines</h1>
-            <h1>Update your {{cuisine.getCuisineName}} cuisine type</h1>
-            <form method="post" action="/cuisines/{{cuisine.getId}}">
-                <input type="hidden" value="patch" name="_method">
+            <div class="row" id="cuisine-edit-column">
+                <div class="col-md-7">
+                </div>
+                <div class="col-md-5">
+                    <div id="cuisine-edit-section">
+                        <h1>Edit &nbsp;Cuisine</h1>
+                        <form method="post" id="cuisine-edit-form" action="/cuisines/{{cuisine.getId}}">
+                            <input type="hidden" value="patch" name="_method">
 
-                <label for="name">Rename your cuisine type:</label>
-                <input type="text" name="name" id="name" value="{{ cuisine.getCuisineName }}">
-                <button class="btn btn-info" type="submit">Update</button>
-            </form>
+                            <label for="name">Rename your cuisine type: </label> <br><br>
+                            <input type="text" name="name" id="name" value="{{ cuisine.getCuisineName }}">
+                            <button class="btn btn-success" type="submit"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                        </form>
 
 
-            <p><a href="/home">Home</a></p>
+                        <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
         {% include '/components/footerBanner.html.twig' %}
     </body>
