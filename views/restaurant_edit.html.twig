@@ -2,8 +2,9 @@
 <html>
     {% include '/components/head.html.twig' %}
     <body>
-        <div class="container">
+        {% include '/components/headerBanner.html.twig' %}
 
+        <div class="container">
             <h1>Update {{restaurant.getRestaurantName}}</h1>
             <form method="post" action="/restaurants/{{restaurant.getRestaurantId}}">
                 <input type="hidden" value="patch" name="_method">
@@ -18,7 +19,6 @@
                 <input type="text" name="keywords" id="keywords" value="{{ restaurant.getKeywords }}">
                 <button class="btn btn-info" type="submit">Update</button>
             </form>
-
 
             <p><a href="/home">Home</a></p>
         </div>

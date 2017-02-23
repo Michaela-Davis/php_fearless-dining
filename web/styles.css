@@ -8,6 +8,7 @@ h1 {
     font-size: 200%;
 }
 
+/*LANDING PAGE*/
 #landing {
     background-image: url("/img/landing.png");
     background-repeat: no-repeat;
@@ -40,4 +41,66 @@ h1 {
 #landing-banner .btn {
     font-size: 50%;
     letter-spacing: 2px;
+}
+
+/*HEADER BANNER*/
+.header-banner {
+    background-color: #00bc8c;
+    display: block;
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 30px;
+}
+
+/*Home CUISINES*/
+.container {
+    width: 100%;
+}
+
+#cuisines-page {
+    margin-left: 20px;
+    margin-right: 20px;
+    background: url("/img/cuisines.jpg") no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 900px;
+}
+.col-lg-8 {
+    background-attachment: fixed;
+    height: 800px;
+}
+
+#cuisines-list {
+    background-color: #222222;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    height: 850px;
+    opacity: 0.95;
+    overflow-y: auto;
+}
+
+#cuisines-list h1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#cuisines-list li {
+    font-size: 180%;
+    padding-bottom: 10px;
+}
+
+#cuisines-list .btn {
+    padding: 2px;
+    font-size: 100%;
+}
+
+.types-list {
+    display: inline;
+}
+
+#add-cuisine-form {
+    padding-bottom: 40px;
+    font-size: 150%;
 }

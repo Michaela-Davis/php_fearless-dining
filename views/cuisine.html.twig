@@ -2,9 +2,10 @@
 <html>
     {% include '/components/head.html.twig' %}
     <body>
-        <div class="container">
+        {% include '/components/headerBanner.html.twig' %}
 
-            <h1>Fearless Dining</h1>
+        <div class="container">
+    
             <form method="post" action="/add-restaurant">
                 <input type="text" name="name" placeholder="Restaurant name">
                 <input type="text" name="address" placeholder="Restaurant address">

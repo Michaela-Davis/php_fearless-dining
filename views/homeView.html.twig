@@ -2,33 +2,50 @@
 <html>
     {% include '/components/head.html.twig' %}
     <body>
+        {% include '/components/headerBanner.html.twig' %}
         <div class="container">
-            <h1>Fearless Dining</h1>
-            <form method="post" action="/add-cuisine">
-                <input type="text" name="name" placeholder="New type of cuisine">
-                <button class="btn btn-info" type="submit">Add</button>
-            </form>
-
-            {% if cuisines is not empty %}
-                <ul>
-                {% for cuisine in cuisines %}
-                    <li><a href="/cuisines/{{ cuisine.getID }}">{{cuisine.getCuisineName}}</a></li>
-
-                        <form action="/cuisines/{{cuisine.getId}}/edit" method="post">
-                            <button type="submit" class="btn btn-success">Update</button>
+            <div class="row" id="cuisines-page">
+                <div class="col-lg-7">
+                </div>
+                <div class="col-lg-5">
+                    <div id="cuisines-list">
+                        <h1>Cuisines</h1>
+                        <form method="post" action="/add-cuisine" id="add-cuisine-form">
+                            <input type="text" name="name" placeholder="New type of cuisine">
+                            &nbsp;&nbsp;
+                            <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
                         </form>
-                        
 
-                    <form action="/cuisines/{{cuisine.getId}}" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" class="btn btn-danger">Delete this cuisine type</button>
-                    </form>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <p> There are no cuisines yet! </p>
-            {% endif %}
-
+                        {% if cuisines is not empty %}
+                            <ul>
+                            {% for cuisine in cuisines %}
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <li>
+                                            <a href="/cuisines/{{ cuisine.getID }}">{{cuisine.getCuisineName}}</a>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <form action="/cuisines/{{cuisine.getId}}/edit" method="post">
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form action="/cuisines/{{cuisine.getId}}" method="post">
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                    </div>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p> There are no cuisines yet! </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
+
     </body>
 </html>

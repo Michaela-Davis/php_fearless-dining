@@ -2,8 +2,10 @@
 <html>
     {% include '/components/head.html.twig' %}
     <body>
-        <div class="container">
+        {% include '/components/headerBanner.html.twig' %}
 
+        <div class="container">
+            <h1>Cuisines</h1>
             <h1>Update your {{cuisine.getCuisineName}} cuisine type</h1>
             <form method="post" action="/cuisines/{{cuisine.getId}}">
                 <input type="hidden" value="patch" name="_method">
