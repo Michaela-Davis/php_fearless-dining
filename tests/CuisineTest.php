@@ -121,7 +121,7 @@
 
             $new_cuisine->deleteCuisine();
 
-            $this->assertEquals([], $Restaurants::getAll());
+            $this->assertEquals([], Restaurants::getAll());
 
         }
     }
