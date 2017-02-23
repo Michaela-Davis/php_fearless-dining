@@ -13,7 +13,7 @@
                         <form method="post" action="/add-cuisine" id="add-cuisine-form">
                             <input type="text" name="name" placeholder="New type of cuisine">
                             &nbsp;&nbsp;
-                            <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                            <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add &nbsp;</button>
                         </form>
 
                         {% if cuisines is not empty %}
@@ -46,6 +46,6 @@
                 </div>
             </div>
         </div>
-
+        {% include '/components/footerBanner.html.twig' %}
     </body>
 </html>

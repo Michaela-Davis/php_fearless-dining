@@ -43,15 +43,6 @@ h1 {
     letter-spacing: 2px;
 }
 
-/*HEADER BANNER*/
-.header-banner {
-    background-color: #00bc8c;
-    display: block;
-    text-align: center;
-    padding: 1px;
-    margin-bottom: 30px;
-}
-
 /*Home CUISINES*/
 .container {
     width: 100%;
@@ -64,6 +55,7 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    border-radius: 15px;
     height: 900px;
 }
 .col-lg-8 {
@@ -103,4 +95,10 @@ h1 {
 #add-cuisine-form {
     padding-bottom: 40px;
     font-size: 150%;
+    padding-left: 30px;
+}
+
+#add-cuisine-form .btn {
+    padding: 2px;
+    font-size: 70%;
 }

@@ -3,7 +3,7 @@
     {% include '/components/head.html.twig' %}
     <body>
         {% include '/components/headerBanner.html.twig' %}
-        
+
         <div class="container">
 
             <h1>{{restaurant.getRestaurantName}}</h1>
@@ -14,5 +14,6 @@
             <p><a href="/cuisines/{{restaurant.getCuisineId}}">Return to Cuisines page</a></p>
             <p><a href="/home">Home</a></p>
         </div>
+        {% include '/components/footerBanner.html.twig' %}
     </body>
 </html>
