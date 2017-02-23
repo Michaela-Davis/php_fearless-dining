@@ -10,10 +10,10 @@
                     <div id="restaurant-details">
                         <h1>{{restaurant.getRestaurantName}}</h1>
 
-                        <p>Street Address: {{restaurant.getAddress}}</p>
-                        <p>Keywords: {{restaurant.getKeywords}}</p>
+                        <p>Street Address: &nbsp;<span class="restaurants-info">{{restaurant.getAddress}}</span></p>
+                        <p>Keywords: &nbsp;<span class="restaurants-info">{{restaurant.getKeywords}}</span></p> <br>
 
-                        <p><a href="/cuisines/{{restaurant.getCuisineId}}">Return to Cuisines page</a></p>
+                        <p><a href="/cuisines/{{restaurant.getCuisineId}}"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp; Return to Cuisines page</a></p>
                         <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
                     </div>
                 </div>
