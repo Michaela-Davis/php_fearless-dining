@@ -89,6 +89,21 @@
 
             $this->assertEquals("South American", $new_cuisine->getCuisineName());
         }
+
+        function testDeleteCuisine()
+        {
+            $cuisine_name = "Mexican";
+            $new_cuisine = new Cuisine($cuisine_name);
+            $new_cuisine->save();
+
+            $cuisine_name2 = "Thai";
+            $new_cuisine2 = new Cuisine($cuisine_name2);
+            $new_cuisine2->save();
+
+            $new_cuisine->deleteCuisine();
+
+            $this->assertEquals([$new_cuisine2], Cuisine::getAll());
+        }
     }
 
 
