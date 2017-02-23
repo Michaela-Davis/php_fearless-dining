@@ -63,6 +63,12 @@
         return $app['twig']->render('homeView.html.twig', array('cuisine' => $this_cuisine, 'cuisines' => Cuisine::getAll()));
     });
 
+    $app->delete("/cuisines/{id}", function($id) use ($app) {
+        $cuisine = Cuisine::find($id);
+        $cuisine->deleteCuisine();
+        return $app['twig']->render('homeView.html.twig', array('cuisines' => Cuisine::getAll()));
+    });
+
     $app->get("/restaurants/{id}/edit", function($id) use ($app) {
         $restaurant = Restaurant::findRestaurant($id);
         $cuisine = Cuisine::findCuisine($id);
