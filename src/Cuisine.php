@@ -78,8 +78,12 @@
         {
             $GLOBALS['DB']->exec("UPDATE cuisines SET name = '{$new_name}' WHERE id = {$this->getId()};");
             $this->setCuisineName($new_name);
-
         }
-    }
 
+        function deleteCuisine()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM cuisines WHERE id={$this->getId()};");
+        }
+
+    }
 ?>
