@@ -6,7 +6,7 @@
 
     $app = new Silex\Application();
 
-    $server = 'mysql:host=localhost:8889;dbname=fearless_dining';
+    $server = 'mysql:host=localhost:3306;dbname=fearless_dining';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -80,9 +80,10 @@
     });
 
     $app->delete("/restaurants/{id}", function($id) use ($app) {
+        $cuisine = Cuisine::findCuisine($id);
         $restaurant = Restaurant::findRestaurant($id);
         $restaurant->deleteRestaurant();
-        return $app['twig']->render('cuisine.html.twig', array('restaurants' => Restaurant::getAll()));
+        return $app['twig']->render('cuisine.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => $cuisine));
     });
 
     return $app;
