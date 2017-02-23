@@ -5,14 +5,21 @@
         {% include '/components/headerBanner.html.twig' %}
 
         <div class="container">
+            <div class="row" id="restaurant-page">
+                <div class="col-md-5">
+                    <div id="restaurant-details">
+                        <h1>{{restaurant.getRestaurantName}}</h1>
 
-            <h1>{{restaurant.getRestaurantName}}</h1>
+                        <p>Street Address: {{restaurant.getAddress}}</p>
+                        <p>Keywords: {{restaurant.getKeywords}}</p>
 
-            <p>Street Address: {{restaurant.getAddress}}</p>
-            <p>Keywords: {{restaurant.getKeywords}}</p>
-
-            <p><a href="/cuisines/{{restaurant.getCuisineId}}">Return to Cuisines page</a></p>
-            <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                        <p><a href="/cuisines/{{restaurant.getCuisineId}}">Return to Cuisines page</a></p>
+                        <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                </div>
+            </div>
         </div>
         {% include '/components/footerBanner.html.twig' %}
     </body>
