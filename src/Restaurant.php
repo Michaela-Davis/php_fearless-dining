@@ -81,14 +81,14 @@
             return $found_restaurant;
         }
 
-        // function updateCuisine($new_value)
-        // {
-        //     if($new_value == $restaurant->getCuisineName()) {
-        //         $GLOBALS['DB']->exec("UPDATE cuisines SET name = '{$new_value}' WHERE id = {$this->getId()};");
-        //         $this->setCuisineName($new_value);
-        //     } else if ($new_value == $restaurant->getCuisineName())
-        //
-        // }
+        function updateRestaurant($new_value)
+        {
+            // if($new_value == $restaurant->getCuisineName()) {
+            //     $GLOBALS['DB']->exec("UPDATE cuisines SET name = '{$new_value}' WHERE id = {$this->getId()};");
+            //     $this->setCuisineName($new_value);
+            // } else if ($new_value == $restaurant->getCuisineName())
+            //
+        }
     }
 
 

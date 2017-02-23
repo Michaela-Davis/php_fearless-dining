@@ -66,16 +66,26 @@
             $this->assertEquals($new_restaurant, $result);
         }
 
+        function test_updateRestaurant()
+        {
+            $restaurant_name = "Matador";
+            $address = "1234 N Peach Lane, Portland OR";
+            $keywords = "yummy, cheap, spicy";
+            $cuisine_id = 1;
+            $id = null;
+            $test_restaurant = new Restaurant($restaurant_name, $address, $keywords, $cuisine_id, $id);
+            $test_restaurant->save();
 
+            $new_value = "800 E. Burnside, Portland, OR";
 
+            /// Act   ///
+            $test_restaurant->updateRestaurant($new_value);
 
+            /// Assert ///
+            $this->assertEquals("800 E. Burnside, Portland, OR", $test_restaurant->getRestaurantName());
+        }
 
 
 
     }
-
-
-
-
-
 ?>
