@@ -85,7 +85,27 @@
             $this->assertEquals("800 E. Burnside, Portland, OR", $test_restaurant->getRestaurantName());
         }
 
+        function testDeleteRestaurant()
+        {
+            $restaurant_name = "Matador";
+            $address = "1234 N Peach Lane, Portland OR";
+            $keywords = "yummy, cheap, spicy";
+            $cuisine_id = 1;
+            $id = null;
+            $test_restaurant = new Restaurant($restaurant_name, $address, $keywords, $cuisine_id, $id);
+            $test_restaurant->save();
 
+            $restaurant_name2 = "Sivalai Thai";
+            $address2 = "5678 W Bark Road, Portland OR";
+            $keywords2 = "pricy, friendly";
+            $cuisine_id2 = 2;
+            $new_restaurant2 = new Restaurant($restaurant_name2, $address2, $keywords2, $cuisine_id2);
+            $new_restaurant2->save();
+
+            $test_restaurant->deleteRestaurant();
+
+            $this->assertEquals([$new_restaurant2], Restaurant::getAll());
+        }
 
     }
 ?>

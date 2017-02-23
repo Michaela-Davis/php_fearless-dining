@@ -16,7 +16,7 @@
             {% if restaurants is not empty %}
                 <ul>
                     {% for restaurant in restaurants %}
-                    <li><a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a><a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Update</a></li>
+                    <li><a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a>&nbsp;&nbsp;<a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Update</a>&nbsp;&nbsp;<a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Delete</a></li>
                     {% endfor %}
                 </ul>
             {% else %}
