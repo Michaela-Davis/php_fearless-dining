@@ -41,6 +41,21 @@
             return $this->id;
         }
 
+        function setRestaurantName($new_name)
+        {
+            $this->restaurant_name = (string) $new_name;
+        }
+
+        function setRestaurantAddress($new_address)
+        {
+            $this->address = (string) $new_address;
+        }
+
+        function setRestaurantKeywords($new_keywords)
+        {
+            $this->keywords = (string) $new_keywords;
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO restaurants (name, address, keywords, cuisine_id) VALUES ('{$this->getRestaurantName()}', '{$this->getAddress()}', '{$this->getKeywords()}', {$this->getCuisineId()});");
@@ -81,13 +96,12 @@
             return $found_restaurant;
         }
 
-        function updateRestaurant($new_value)
+        function updateRestaurant($new_name, $new_address, $new_keywords)
         {
-            // if($new_value == $restaurant->getCuisineName()) {
-            //     $GLOBALS['DB']->exec("UPDATE cuisines SET name = '{$new_value}' WHERE id = {$this->getId()};");
-            //     $this->setCuisineName($new_value);
-            // } else if ($new_value == $restaurant->getCuisineName())
-            //
+            $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}', address = '{$new_address}', keywords = '{$new_keywords}' WHERE id = {$this->getRestaurantId()};");
+            $this->setRestaurantName($new_name);
+            $this->setRestaurantAddress($new_address);
+            $this->setRestaurantKeywords($new_keywords);
         }
     }
 

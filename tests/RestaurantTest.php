@@ -79,7 +79,7 @@
             $new_value = "800 E. Burnside, Portland, OR";
 
             /// Act   ///
-            $test_restaurant->updateRestaurant($new_value);
+            $test_restaurant->updateRestaurant($new_value, $address, $keywords);
 
             /// Assert ///
             $this->assertEquals("800 E. Burnside, Portland, OR", $test_restaurant->getRestaurantName());
