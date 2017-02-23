@@ -80,6 +80,11 @@
         return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant, 'cuisine' => $cuisine));
     });
 
+    $app->post("/restaurants/{id}/edit", function($id) use ($app) {
+        $restaurant = Restaurant::findRestaurant($id);
+        return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant));
+    });
+
     $app->patch("/restaurants/{id}", function($id) use ($app) {
         $name = $_POST['name'];
         $address = $_POST['address'];

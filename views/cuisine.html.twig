@@ -5,30 +5,62 @@
         {% include '/components/headerBanner.html.twig' %}
 
         <div class="container">
+            <div class="row" id="restaurants-page">
+                <div class="col-md-5">
+                    <div id="restaurants-list">
+                        <h1>{{cuisine.getCuisineName}} Restaurants</h1>
+                        <div class="row">
+                            <div>
+                            <form method="post" action="/add-restaurant" id="add-restaurant-form">
+                                <input type="text" name="name" placeholder="Restaurant name">
+                                <br><br>
+                                <input type="text" name="address" placeholder="Restaurant address">
+                                <br><br>
+                                <input type="text" name="keywords" placeholder="Restaurant keywords">
+                                <input type="hidden" name="cuisine_id" id="cuisine_id" value="{{ cuisine.getId }}">
 
-            <form method="post" action="/add-restaurant">
-                <input type="text" name="name" placeholder="Restaurant name">
-                <input type="text" name="address" placeholder="Restaurant address">
-                <input type="text" name="keywords" placeholder="Restaurant keywords">
-                <input type="hidden" name="cuisine_id" id="cuisine_id" value="{{ cuisine.getId }}">
-                <button class="btn btn-info" type="submit">Add</button>
-            </form>
+                            </div>
+                            <div id="add-restaurant-button">
+                                <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Restaurant&nbsp;</button>
+                            </div>
+                            </form>
+                        </div>
 
-            {% if restaurants is not empty %}
-                <ul>
-                    {% for restaurant in restaurants %}
-                    <li><a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a>&nbsp;&nbsp;<a href="/restaurants/{{restaurant.getRestaurantId}}/edit">Update</a></li>
-                    <form action="/restaurants/{{ restaurant.getRestaurantId}}" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" class="btn btn-danger">Delete restaurant</button>
-                    </form>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>There are no restaurants yet!</p>
-            {% endif %}
+                        <br><br>
+                        {% if restaurants is not empty %}
+                        <ul>
+                            {% for restaurant in restaurants %}
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <li>
+                                        <a href="/restaurants/{{ restaurant.getRestaurantId }}">{{restaurant.getRestaurantName}}</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <form action="/restaurants/{{ restaurant.getRestaurantId}}/edit" method="post">
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <form action="/restaurants/{{ restaurant.getRestaurantId}}" method="post">
+                                            <input type="hidden" name="_method" value="delete">
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                        </form>
+                                    </div>
+                                </li>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>There are no restaurants yet!</p>
+                        {% endif %}
 
-            <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                        <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                </div>
+            </div>
+
         </div>
         {% include '/components/footerBanner.html.twig' %}
     </body>

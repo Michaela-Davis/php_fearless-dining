@@ -68,7 +68,7 @@ h1 {
     height: 800px;
 }
 
-#cuisines-list, #cuisine-edit-section {
+#cuisines-list, #cuisine-edit-section, #restaurant-details, #restaurants-list {
     background-color: #222222;
     margin: 20px;
     padding: 20px;
@@ -77,7 +77,6 @@ h1 {
     opacity: 0.95;
     overflow-y: auto;
 }
-
 
 #cuisines-list li {
     font-size: 180%;
@@ -93,15 +92,26 @@ h1 {
     display: inline;
 }
 
-#add-cuisine-form, #cuisine-edit-form {
+#add-cuisine-form, #cuisine-edit-form, #add-restaurant-form {
     padding-bottom: 40px;
     font-size: 150%;
     padding-left: 30px;
 }
 
-#add-cuisine-form, #cuisine-edit-form .btn {
+#add-cuisine-form .btn {
     padding: 2px;
     font-size: 70%;
+}
+
+#cuisine-edit-form .btn {
+    padding: 2px;
+    font-size: 70%;
+}
+
+#add-cuisine-form {
+    padding-bottom: 40px;
+    font-size: 150%;
+    padding-left: 30px;
 }
 
 #cuisine-edit-column {
@@ -117,4 +127,61 @@ h1 {
 
 #cuisine-edit-section {
     text-align: center;
+}
+
+#restaurants-page {
+    margin-left: 20px;
+    margin-right: 20px;
+    background: url("/img/italian.jpg") no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 15px;
+    height: 900px;
+}
+
+#restaurants-list li {
+    font-size: 180%;
+    padding-bottom: 10px;
+}
+
+#restaurants-list .btn {
+    padding: 2px;
+    font-size: 100%;
+}
+
+#restaurant-details .btn {
+    padding: 2px;
+    font-size: 100%;
+}
+
+#add-restaurant-form input {
+    width: 93%;
+}
+
+#add-restaurant-form .btn {
+    padding: 2px;
+    font-size: 80%;
+}
+
+#add-restaurant-button {
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#restaurant-page {
+    margin-left: 20px;
+    margin-right: 20px;
+    background: url("/img/japanese.jpg") no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 15px;
+    height: 900px;
+}
+
+#restaurant-details li {
+    font-size: 180%;
+    padding-bottom: 10px;
 }
