@@ -81,15 +81,16 @@
         $keywords = $_POST['keywords'];
         $this_restaurant = Restaurant::findRestaurant($id);
         $this_restaurant->updateRestaurant($name, $address, $keywords);
-        $cuisine = Cuisine::findCuisine($_POST['cuisine_id']);
+        $cuisine = Cuisine::findCuisine($this_restaurant->getCuisineId());
         return $app['twig']->render('cuisine.html.twig', array('restaurant' => $this_restaurant, 'restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
     });
 
     $app->delete("/restaurants/{id}", function($id) use ($app) {
-        $cuisine = Cuisine::findCuisine($id);
         $restaurant = Restaurant::findRestaurant($id);
+        $restaurant_cuisine_id = $restaurant->getCuisineId();
+        $cuisine = Cuisine::findCuisine($restaurant_cuisine_id);
         $restaurant->deleteRestaurant();
-        return $app['twig']->render('cuisine.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => $cuisine));
+        return $app['twig']->render('cuisine.html.twig', array('restaurants' => $cuisine->getRestaurants(), 'cuisine' => $cuisine));
     });
 
     return $app;
