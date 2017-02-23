@@ -103,6 +103,11 @@
             $this->setRestaurantAddress($new_address);
             $this->setRestaurantKeywords($new_keywords);
         }
+
+        function deleteRestaurant()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id={$this->getRestaurantId()};");
+        }
     }
 
 
