@@ -49,7 +49,7 @@ h1 {
     letter-spacing: 2px;
 }
 
-/*Home CUISINES*/
+/***********   Begin Home CUISINES   ************/
 .container {
     width: 100%;
 }
@@ -64,12 +64,8 @@ h1 {
     border-radius: 15px;
     height: 900px;
 }
-.col-lg-8 {
-    background-attachment: fixed;
-    height: 800px;
-}
 
-#cuisines-list, #cuisine-edit-section, #restaurant-details, #restaurants-list {
+#cuisines-list, #cuisine-edit-section, #restaurant-details, #restaurants-list, #edit-restaurant-details {
     background-color: #222222;
     margin: 20px;
     padding: 20px;
@@ -93,7 +89,7 @@ h1 {
     display: inline;
 }
 
-#add-cuisine-form, #cuisine-edit-form, #add-restaurant-form {
+#add-cuisine-form, #cuisine-edit-form, #add-restaurant-form, #restaurant-edit-form {
     padding-bottom: 40px;
     font-size: 150%;
     padding-left: 30px;
@@ -129,9 +125,10 @@ h1 {
 #cuisine-edit-section {
     text-align: center;
 }
+/***********   End Home CUISINES   ************/
 
 
- /********  RESTAURANT INFO  ****************/
+ /********  Begin RESTAURANT INFO  ****************/
 #restaurants-page {
     margin-left: 20px;
     margin-right: 20px;
@@ -193,3 +190,23 @@ h1 {
     font-size: 150%;
     color: darkcyan;
 }
+
+#edit-restaurant-page {
+    margin-left: 20px;
+    margin-right: 20px;
+    background: url("/img/restaurant-edit.jpg") no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 15px;
+    height: 900px;
+}
+
+#restaurant-edit-form .btn {
+    padding: 2px;
+    font-size: 70%;
+    width: 90%;
+    vertical-align: middle;
+    text-align: center;
+}
+ /********  End RESTAURANT INFO  ****************/
